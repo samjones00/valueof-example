@@ -2,7 +2,7 @@
 using ValueObject.Exceptions;
 using ValueOf;
 
-namespace ValueObject.Models
+namespace ValueObject.ValueObjects
 {
     public class Postcode : ValueOf<string, Postcode>
     {

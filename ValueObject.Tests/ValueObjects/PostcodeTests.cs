@@ -2,14 +2,14 @@ using FluentAssertions;
 using NUnit.Framework;
 using System;
 using ValueObject.Exceptions;
-using ValueObject.Models;
+using ValueObject.ValueObjects;
 
-namespace ValueObject.Tests.Models
+namespace ValueObjectTests
 {
     public class PostcodeTests
     {
         [Test]
-        public void GivenEmptyStringShouldThrowNullArgumentException()
+        public void GivenEmptyStringShouldThrowArgumentNullException()
         {
             // Arrange & Act
             Action act = () => Postcode.From(string.Empty);
