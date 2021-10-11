@@ -30,7 +30,7 @@ namespace ValueObjectTests
 
             // Assert
             act.Should().Throw<InvalidPostcodeFormatException>()
-                .WithMessage("Invalid postcode format: abcd.");
+                .WithMessage("Invalid postcode format: aaaaaaaaaaaaaaaa.");
         }
 
         [Test]
