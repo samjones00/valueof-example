@@ -4,8 +4,11 @@ using ValueOf;
 
 namespace ValueObject.ValueObjects
 {
-    public class Postcode : ValueOf<string, Postcode>
+    public class FirstName : ValueOf<string, FirstName>
     {
+        private const int MinLength = 1;
+        private const int MaxLength = 15;
+
         protected override void Validate()
         {
             if (string.IsNullOrEmpty(Value))
@@ -13,7 +16,12 @@ namespace ValueObject.ValueObjects
                 throw new ArgumentNullException(nameof(Value));
             }
 
-            if (Value.Length < 5)
+            if (Value.Length < MinLength)
+            {
+                throw new InvalidPostcodeFormatException(Value);
+            }
+
+            if (Value.Length > MaxLength)
             {
                 throw new InvalidPostcodeFormatException(Value);
             }

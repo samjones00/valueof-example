@@ -6,13 +6,14 @@ using ValueObject.ValueObjects;
 
 namespace ValueObjectTests
 {
-    public class PostcodeTests
+    public class FirstNameTests
     {
-        [Test]
-        public void GivenEmptyStringShouldThrowArgumentNullException()
+        [TestCase(null)]
+        [TestCase("")]
+        public void GivenNullOrEmptyStringShouldThrowArgumentNullException(string name)
         {
             // Arrange & Act
-            Action act = () => Postcode.From(string.Empty);
+            Action act = () => FirstName.From(name);
 
             // Assert
             act.Should().Throw<ArgumentNullException>()
@@ -22,8 +23,10 @@ namespace ValueObjectTests
         [Test]
         public void GivenLongStringShouldThrowInvalidPostcodeFormatException()
         {
+            var name = new string('a', 16); //max is 15
+
             // Arrange & Act
-            Action act = () => Postcode.From("abcd");
+            Action act = () => FirstName.From(name);
 
             // Assert
             act.Should().Throw<InvalidPostcodeFormatException>()
@@ -34,10 +37,11 @@ namespace ValueObjectTests
         public void GivenValidStringShouldCreateValueObject()
         {
             // Arrange & Act
-            var act = Postcode.From("abcd efg");
+            var act = FirstName.From("Steve Jobs");
 
             // Assert
-            act.Value.Should().Be("abcd efg");
+            act.ToString().Should().Be("Steve Jobs");
+            act.Value.Should().Be("Steve Jobs");
         }
     }
 }

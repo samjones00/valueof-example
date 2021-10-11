@@ -4,7 +4,7 @@ namespace ValueObject.Exceptions
 {
     public class InvalidPostcodeFormatException : Exception
     {
-        public InvalidPostcodeFormatException(string postcode) : base($"Invalid postcode format: {postcode}.")
+        public InvalidPostcodeFormatException(string value) : base($"Invalid postcode format: {value}.")
         {
         }
     }
